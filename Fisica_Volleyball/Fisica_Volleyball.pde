@@ -20,12 +20,13 @@ boolean wkey, akey, skey, dkey, upkey, downkey, rightkey, leftkey;
 float a;
 
 FWorld world;
+FBox leftPlayer, rightPlayer;
 
 void setup() {
   size(1000, 800);
   
   makeWorld();
-  floor();
+  ground();
   players();
 }
 
@@ -37,7 +38,7 @@ void makeWorld() {
 }
 
 void players() {
-  FBox leftPlayer = new FBox(100, 100);
+  leftPlayer = new FBox(100, 100);
   leftPlayer.setPosition(width/4, 545);
   leftPlayer.setStroke(0);
   leftPlayer.setStrokeWeight(2);
@@ -47,7 +48,7 @@ void players() {
   leftPlayer.setRestitution(0);
   world.add(leftPlayer);
   
-  FBox rightPlayer = new FBox(100, 100);
+  rightPlayer = new FBox(100, 100);
   rightPlayer.setPosition(3*width/4, 545);
   rightPlayer.setStroke(0);
   rightPlayer.setStrokeWeight(2);
@@ -58,7 +59,7 @@ void players() {
   world.add(rightPlayer);
 }
 
-void floor() {
+void ground() {
   FBox net = new FBox(20, 150);
   net.setPosition(width/2, 525);
   net.setStroke(0);
@@ -117,6 +118,5 @@ void keyReleased() {
 }
 
 void handlePlayerInput() {
-  float left_vx = leftPlayer.getVelocityX();
   leftPlayer.setVelocity(100, 0);
 }
